@@ -1,11 +1,13 @@
 import React from "react";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormProduto () {
 
     return (
 
         <div>
+            <MenuSistema />
 
             <div style={{marginTop: '3%'}}>
 
@@ -40,21 +42,20 @@ export default function FormProduto () {
                             </Form.Group>
                             
                             <Form.Group>
-
+                             
                                 <textarea
                                     fluid
                                     label='Descrição'
-                                    width={6}
                                     maxLength="300"
+                                    width={40}
                                     placeholder="Informe a descrição do produto"
                                     >
                                     
                                 </textarea>
-
                                 <Form.Input
                                     fluid
                                     label='Valor Unitário'
-                                    width={6}
+                                    width={30}
                                     maxLength="50"
                                     placeholder="30"
                                     > 
@@ -63,7 +64,7 @@ export default function FormProduto () {
                                 <Form.Input
                                     fluid
                                     label='Tempo de Entrega Mínimo em Minutos'
-                                    width={6}
+                                    width={1}
                                     placeholder="30"
                                 >
                                    
@@ -75,8 +76,9 @@ export default function FormProduto () {
                                     width={6}
                                     placeholder="40"
                                 >
-
+                               
                                 </Form.Input>
+                                
                             </Form.Group>
                         
                         </Form>

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import InputMask from 'react-input-mask';
 import { Button, Checkbox, Container, Divider, Form, FormGroup, FormInput, Icon } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormEntregador () {
+   
 
     return (
 
         <div>
-
+         <MenuSistema/>
             <div style={{marginTop: '3%'}}>
 
                 <Container textAlign='justified' >
@@ -164,6 +166,8 @@ export default function FormEntregador () {
                         </Form>
                         
                         
+                        <div>
+                        <label htmlFor="" style={{color:""}}>Ativo</label>
                         <Checkbox
                         label="Sim">
                         </Checkbox>
@@ -171,7 +175,7 @@ export default function FormEntregador () {
                         <Checkbox
                         label="Não">
                         </Checkbox>
-                        
+                        </div>
                         <div style={{marginTop: '4%'}}>
 
                             <Button
