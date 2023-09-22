@@ -27,7 +27,7 @@ class MenuSistema extends React.Component{
                        active={this.state.activeItem === 'cliente'}
                        onClick={this.handleItemClick}
                        as={Link}
-                       to='/form-cliente'
+                       to='/List-Cliente'
                    />
 
                    <Menu.Item
