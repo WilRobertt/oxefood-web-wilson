@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, Container, Divider, Icon, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
-export default function ListCliente () {
+export default function ListEntregador () {
 
    const [lista, setLista] = useState([]);
 
@@ -14,7 +14,7 @@ export default function ListCliente () {
 
    function carregarLista() {
 
-       axios.get("http://localhost:8082/api/cliente")
+       axios.get("http://localhost:8082/api/Entregador")
        .then((response) => {
            setLista(response.data)
        })
@@ -35,7 +35,7 @@ return(
 
             <Container textAlign='justified' >
 
-                <h2> Cliente </h2>
+                <h2> Entregador </h2>
                 <Divider />
 
                 <div style={{marginTop: '4%'}}>
@@ -46,7 +46,7 @@ return(
                         icon='clipboard outline'
                         floated='right'
                         as={Link}
-                        to='/form-cliente'
+                        to='/form-entregador'
                     />
 <br/><br/><br/>
                   
@@ -55,40 +55,59 @@ return(
                       <Table.Header>
                           <Table.Row>
                               <Table.HeaderCell>Nome</Table.HeaderCell>
+                              <Table.HeaderCell>Data de Nascimento </Table.HeaderCell>
                               <Table.HeaderCell>CPF</Table.HeaderCell>
-                              <Table.HeaderCell>Data de Nascimento</Table.HeaderCell>
+                              <Table.HeaderCell>RG</Table.HeaderCell>
                               <Table.HeaderCell>Fone Celular</Table.HeaderCell>
                               <Table.HeaderCell>Fone Fixo</Table.HeaderCell>
+                              <Table.HeaderCell>Quantidade de Entregas</Table.HeaderCell>
+                              <Table.HeaderCell>Valor do Frete</Table.HeaderCell>
+                              <Table.HeaderCell>Rua</Table.HeaderCell>
+                              <Table.HeaderCell>Número</Table.HeaderCell>
+                              <Table.HeaderCell>Bairro</Table.HeaderCell>
+                              <Table.HeaderCell>Cidade</Table.HeaderCell>
+                              <Table.HeaderCell>CEP</Table.HeaderCell>
+                              <Table.HeaderCell>UF</Table.HeaderCell>
                               <Table.HeaderCell textAlign='center'>Ações</Table.HeaderCell>
                           </Table.Row>
                       </Table.Header>
                  
                       <Table.Body>
 
-                          { lista.map(cliente => (
+                          { lista.map(entregador => (
 
-                              <Table.Row key={cliente.id}>
-                                  <Table.Cell>{cliente.nome}</Table.Cell>
-                                  <Table.Cell>{cliente.cpf}</Table.Cell>
-                                  <Table.Cell>{formatarData(cliente.dataNascimento)}</Table.Cell>
-                                  <Table.Cell>{cliente.foneCelular}</Table.Cell>
-                                  <Table.Cell>{cliente.foneFixo}</Table.Cell>
+                              <Table.Row key={entregador.id}>
+                                  <Table.Cell>{entregador.nome}</Table.Cell>
+                                  <Table.Cell>{formatarData(entregador.dataNascimento)}</Table.Cell>
+                                  <Table.Cell>{entregador.cpf}</Table.Cell>
+                                  <Table.Cell>{entregador.rg}</Table.Cell>
+                                  <Table.Cell>{entregador.foneCelular}</Table.Cell>
+                                  <Table.Cell>{entregador.foneFixo}</Table.Cell>
+                                  <Table.Cell>{entregador.qtdEntregas}</Table.Cell>
+                                  <Table.Cell>{entregador.valorFrete}</Table.Cell>
+                                  <Table.Cell>{entregador.rua}</Table.Cell>
+                                  <Table.Cell>{entregador.numero}</Table.Cell>
+                                  <Table.Cell>{entregador.bairro}</Table.Cell>
+                                  <Table.Cell>{entregador.cidade}</Table.Cell>
+                                  <Table.Cell>{entregador.cep}</Table.Cell>
+                                  <Table.Cell>{entregador.uf}</Table.Cell>
+
                                   <Table.Cell textAlign='center'>
 
                                       <Button
                                           inverted
                                           circular
                                           color='green'
-                                          title='Clique aqui para editar os dados deste cliente'
+                                          title='Clique aqui para editar os dados deste entregador'
                                           icon>
-                                               <Link to="/form-cliente" state={{id: cliente.id}} style={{color: 'green'}}> <Icon name='edit' /> </Link>
+                                               <Link to="/form-entregador" state={{id: entregador.id}} style={{color: 'green'}}> <Icon name='edit' /> </Link>
                                       </Button> &nbsp;
 
                                       <Button
                                                inverted
                                                circular
                                                color='red'
-                                               title='Clique aqui para remover este cliente'
+                                               title='Clique aqui para remover este entregador'
                                                icon>
                                                    <Icon name='trash' />
                                            </Button>
