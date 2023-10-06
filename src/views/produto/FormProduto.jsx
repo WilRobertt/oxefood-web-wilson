@@ -99,23 +99,22 @@ export default function FormProduto () {
 
                             </Form.Group>
                             
-                            <Form.Group>
+                            <Form.Group widths='equal'>
                              
-                                <textarea
+                                <Form.TextArea
                                     fluid
                                     label='Descrição'
                                     maxLength="300"
-                                    width={40}
                                     placeholder="Informe a descrição do produto"
                                     value={descricao}
 			                        onChange={e => setDescricao(e.target.value)}
                                     >
                                     
-                                </textarea>
+                                </Form.TextArea>
+                                <div>
                                 <Form.Input
                                     fluid
                                     label='Valor Unitário'
-                                    width={30}
                                     maxLength="50"
                                     placeholder="30"
                                     value={valorUnitario}
@@ -126,7 +125,6 @@ export default function FormProduto () {
                                 <Form.Input
                                     fluid
                                     label='Tempo de Entrega Mínimo em Minutos'
-                                    width={1}
                                     placeholder="30"
                                     value={tempoMinimoEntrega}
 			                        onChange={e => setTempoMinimoEntrega(e.target.value)}
@@ -137,14 +135,13 @@ export default function FormProduto () {
                                 <Form.Input
                                     fluid
                                     label='Tempo de Entrega Máximo em Minutos'
-                                    width={6}
                                     placeholder="40"
                                     value={tempoMaximoEntrega}
 			                        onChange={e => setTempoMaximoEntrega(e.target.value)}
                                 >
                                
                                 </Form.Input>
-                                
+                                </div>
                             </Form.Group>
                         
                         </Form>
