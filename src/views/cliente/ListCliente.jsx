@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Divider, Icon, Table, Modal, Header } from 'semantic-ui-react';
+import { Button, Container, Divider, Header, Icon, Modal, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
+import { mensagemErro, notifyError, notifySuccess} from '../util/Util';
+
 
 export default function ListCliente () {
 
@@ -24,16 +26,19 @@ async function remover() {
     await axios.delete('http://localhost:8082/api/cliente/' + idRemover)
     .then((response) => {
 
-        console.log('Cliente removido com sucesso.')
+        notifySuccess('Cliente removido com sucesso.')
 
         axios.get("http://localhost:8082/api/cliente")
         .then((response) => {
             setLista(response.data)
         })
     })
-    .catch((error) => {
-        console.log('Erro ao remover um cliente.')
-    })
+    if (error.response) {
+        notifyError(error.response.data.errors[0].defaultMessage)
+        } else {
+        notifyError(mensagemErro)
+        } 
+        
     setOpenModal(false)
 }
 

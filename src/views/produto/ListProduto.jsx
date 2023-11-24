@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Header, Icon, Menu, Modal, Segment, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
+import { mensagemErro, notifyError, notifySuccess } from '../util/Util';
+
 
 export default function ListProduto () {
 
@@ -74,18 +76,21 @@ function handleChangeCategoriaProduto(value) {
     await axios.delete('http://localhost:8082/api/produto/' + idRemover)
     .then((response) => {
 
-        console.log('Produto removido com sucesso.')
+        notifySuccess('Produto alterado com sucesso.')
 
         axios.get("http://localhost:8082/api/produto")
         .then((response) => {
             setListaProdutos(response.data)
         })
     })
-    .catch((error) => {
-        console.log('Erro ao remover um produto.')
-    })
+    .catch((error) => {if (error.response) {
+        notifyError(error.response.data.errors[0].defaultMessage)
+    } else {
+        notifyError(mensagemErro)} })
+    
+} 
     setOpenModal(false)
-}
+
 
    function carregarLista() {
 
@@ -108,9 +113,9 @@ function handleChangeCategoriaProduto(value) {
        })
       
    
-  
-   }
+}
    
+
 return(
     <div>
         <MenuSistema />
@@ -260,4 +265,5 @@ return(
          </Modal>
        </div>
    )
-}
+                        
+                          }            
