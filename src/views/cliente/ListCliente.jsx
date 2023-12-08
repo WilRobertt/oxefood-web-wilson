@@ -32,12 +32,12 @@ async function remover() {
         .then((response) => {
             setLista(response.data)
         })
-    })
+    }).catch((error) => {
     if (error.response) {
         notifyError(error.response.data.errors[0].defaultMessage)
         } else {
         notifyError(mensagemErro)
-        } 
+        } })
         
     setOpenModal(false)
 }
@@ -56,8 +56,8 @@ async function remover() {
         return ''
     }
 
-    let arrayData = dataParam.split('-');
-    return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
+    //let arrayData = dataParam.split('-');
+    return dataParam[2] + '/' + dataParam[1] + '/' + dataParam[0];
 }
 return(
     <div>
